@@ -60,7 +60,7 @@ var risultato = checkevenOdd(somma);
 
 
 if (evenOdd === risultato) {
-  console.log("Vince il giocatore numbUser");
+  console.log("Vince il giocatore");
 } else {
-  console.log("Vince il giocatore numbPc ");
+  console.log("Vince il PC");
 }
