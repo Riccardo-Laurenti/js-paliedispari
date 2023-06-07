@@ -13,54 +13,66 @@ Pari e Dispari:
 
 
 
-// Variabile pari e dispari
-var numMin = 1;
-var numMax = 5;
+// PARIDISPARI
 
+// L’utente sceglie pari o dispari
 
-// Faccio scegliere all'utente pari o dispari
-var evenOdd = (prompt("scegli tra pari e dispari")).toLowerCase().trim();
+var option = prompt("Scegli pari o dispari");
 
-while ( (evenOdd != "pari") && (evenOdd != "dispari") ) {
-  alert("Attenzione! Scrivere bene pari o dispari");
-  evenOdd = (prompt("scegli tra pari e dispari"));
+function IsNotUneven(numero) {
+
+    if (isNaN(numero) == false) {
+        return (numero %2 == 1 ?  true : false);
+    }
+    else {
+        return null;
+    }
 }
 
-var numbUser = parseInt(prompt("scegli un numero da 1 a 5"));
-while ((numbUser < numMin) || (numbUser > numMax)) {
-  numbUser = parseInt(prompt("scegli un numero da 1 a 5"));
+// l'utente inserisce un numero da 1 a 5.
+
+const numeroUtente = parseInt(prompt("inserisci un numero da 1 a 5"));
+console.log("Numero scelto dall'utente " + numeroUtente);
+
+// controlliamo se numero è pari o dispari
+console.log(IsNotUneven(numeroUtente));
+
+//  Genero un numero random (sempre da 1 a 5) per il computer (usando una funzione).
+
+function numeroPC(min, max) {
+    let OutNumPC = Math.floor(Math.random() * (max - min) ) + min;
+    return OutNumPC;
 }
 
-console.log(numbUser);
+        // estraggo risultato del numero generato da pc;
+const OutNumPC = numeroPC(1,6);
 
-// Genero un numero random da 1 a 5 al computer
-var numbPc = getRandomIntInclusive(1,5);
-console.log(numbPc);
+        // stampo numero da pc;
+console.log("numero pc " + OutNumPC);
 
+// Sommiamo i due numeri (con funzione);
 
-function getRandomIntInclusive(numMin, numMax) {
-  var numRand = Math.floor(Math.random() * (numMax - numMin + 1)) + numMin;
-
-  return numRand;
+        // unisco la somma utente e somma pc nella funzione;
+function somma(numeroUtente, OutNumPC) {
+    let risultato = numeroUtente + OutNumPC;
+    return risultato;
 }
+        //salvo il risulato in una variabile;
+var results = somma(numeroUtente, OutNumPC);
+        // stampo il risultato della somma
+console.log("La somma è " + results);
 
-// Function per pari e dispari
-function checkevenOdd(numero) {
-  if (numero % 2 == 0) {
-    return "pari";
-  }
-    return "dispari";
+
+// //  Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione);
+
+function pariDispari(results) {
+
+    if(results % 2 == 0) {
+        console.log("la somma è pari");
+    } else {
+        console.log("la somma è dispari");
+    }
 }
+pariDispari(results);
 
-// Risultato somma numero user --e-- numb pc con vincitore
-var somma = numbUser + numbPc;
-console.log("Risultato somma",somma);
-
-var risultato = checkevenOdd(somma);
-
-
-if (evenOdd === risultato) {
-  console.log("Vince il giocatore");
-} else {
-  console.log("Vince il PC");
-}
+//  Dichiariamo chi ha vinto;
